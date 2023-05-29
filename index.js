@@ -12,9 +12,7 @@ const cors = require('cors');
 const path = require('path');
 
 
-// svV0c9Pctw7dO03D
-
-// 4LouOz9TnqJsuDdW  --- db password
+const PORT = process.env.PORT || 8080
 
 
 // db connection
@@ -35,7 +33,7 @@ server.use(express.static(path.resolve(__dirname,process.env.PUBLIC_DIR)))
 server.use('/products', productRouter.routes);
 server.use('/users', userRouter.routes);
 server.use('*',(req,res) => {
-  res.sendFile(path.resolve(__dirname,'build','index.html'));
+  res.sendFile(path.resolve(__dirname,'frontend_build','index.html'));
 })
 
 
@@ -43,7 +41,7 @@ server.use('*',(req,res) => {
 
 
 // --------- after creating , asign to the port --------------
-server.listen(process.env.PORT, ()=> {
-    console.log('server started at', process.env.PORT)
+server.listen(PORT, ()=> {
+    console.log('server started at', PORT)
 })
 
